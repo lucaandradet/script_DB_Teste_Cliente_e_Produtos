@@ -11,8 +11,8 @@ CREATE TABLE cliente (
 	endereco_cliente varchar(50) not null,
 	cidade_cliente varchar(35) not null default 'Natal',
 	estado_cliente char(02) not null default 'RN',
-	sexo_cliente char(01) not null check (sexo IN ('M', 'F')),
-	renda_cliente decimal(12,2) not null check (renda >= 750)
+	sexo_cliente char(01) not null check (sexo_cliente IN ('M', 'F')),
+	renda_cliente decimal(12,2) not null check (renda_cliente >= 750)
 	);
 	
 CREATE TABLE marca
@@ -78,7 +78,7 @@ select * from marca;
 select * from produto;
 
 -- Consulta
-SELECT nome_cliente, cidade_cliente, sexo
+SELECT nome_cliente, cidade_cliente, sexo_cliente
 FROM cliente
 ORDER BY nome_cliente ASC, cidade_cliente DESC;
 
