@@ -61,7 +61,7 @@ INSERT INTO cliente VALUES (12,'Flávia','Rua Dantas de Sousa','Parnamirim','RN'
 INSERT INTO marca VALUES (1,'Broto legal','A'),(2,'Prato fino','A'),(3,'Carmil','B'),(4,'Scala','B');
 
 -- Inserindo Produtos
-INSERT INTO produto VALUES (1,1,'Feijão',3,'fbl.png'), (3,2,'Arroz Sinhá',5,'fbl.png'), (6,3,'Arroz Dedá',5,'fbl.png'), (9,4,'Macarrão Parafuso',3,'fbl.png');
+INSERT INTO produto VALUES (1,1,'Feijão',3,'fbl.png'), (3,2,'Arroz Sinhá',5,'fbl.png'), (6,3,'Arroz Dedé',5,'fbl.png'), (9,4,'Macarrão Parafuso',3,'fbl.png');
 
 ---
 
@@ -89,3 +89,6 @@ SELECT nome_cliente, endereco_cliente, cidade_cliente, renda_cliente
 
 -- Renda entre 3000 e 5000
 SELECT * FROM cliente WHERE renda_cliente BETWEEN 3000 AND 5000;
+
+-- Query com mais de uma tabela - INNER JOIN
+SELECT nome_cliente as CLIENTE, nome_produto AS PRODUTO FROM cliente INNER JOIN produto ON cliente.cliente_id = produto.prod_cliente_id ORDER BY nome_cliente
