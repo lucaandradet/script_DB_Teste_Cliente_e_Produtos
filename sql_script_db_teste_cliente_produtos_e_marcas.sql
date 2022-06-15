@@ -25,7 +25,7 @@ CREATE TABLE produto
 (
 produto_id INT,
 produto_marca_id INT,
-prod_cliente_id INT,
+produto_cliente_id INT,
 nome_produto VARCHAR(100),
 preco_produto MONEY,
 fotos_produto varchar(50)
@@ -115,15 +115,25 @@ ORDER BY nome_cliente ASC, cidade_cliente DESC;
 
 --Faça um relatório que exiba apenas o nome, o endereço, e a cidade do cliente da cidade de Caicó e renda menor do 6000
 SELECT nome_cliente, endereco_cliente, cidade_cliente, renda_cliente 
-       FROM cliente where cidade_cliente = 'Caicó'
-	   AND renda_cliente <= 6000;
+FROM cliente where cidade_cliente = 'Caicó' AND renda_cliente <= 6000;
 
 -- Renda entre 3000 e 5000
 SELECT * FROM cliente WHERE renda_cliente BETWEEN 3000 AND 5000;
 
 -- Query com mais de uma tabela - INNER JOIN
-SELECT nome_cliente as CLIENTE, nome_produto AS PRODUTO FROM cliente INNER JOIN produto ON cliente.cliente_id = produto.produto_cliente_id ORDER BY nome_cliente
+SELECT nome_cliente as CLIENTE, nome_produto AS PRODUTO 
+FROM cliente 
+INNER JOIN produto ON cliente.cliente_id = produto.produto_cliente_id 
+ORDER BY nome_cliente
 
 --Sub-Select trazendo os produtos a cima do valor médio dos preços
 SELECT produto_id, nome_produto, preco_produto
-FROM produto WHERE preco_produto > (SELECT AVG(preco_produto) FROM produto)
+FROM produto 
+WHERE preco_produto > (SELECT AVG(preco_produto) FROM produto)
+
+-- Query com mais de uma tabela - INNER JOIN e SUB-SELECT
+SELECT produto_id AS ID_PRODUTO, nome_produto AS PRODUTO,preco_produto AS PRECO_DO_PRODUTO, nome_cliente as CLIENTE
+FROM cliente 
+INNER JOIN produto ON cliente.cliente_id = produto.produto_cliente_id 
+WHERE preco_produto > (SELECT AVG(preco_produto) FROM produto)
+ORDER BY preco_produto DESC;
