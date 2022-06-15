@@ -126,6 +126,12 @@ FROM cliente
 INNER JOIN produto ON cliente.cliente_id = produto.produto_cliente_id 
 ORDER BY nome_cliente
 
+-- Query com dois inner joins
+SELECT produto_id, nome_produto, descricao_marca, preco_produto, nome_cliente
+FROM produto 
+INNER JOIN cliente ON cliente.cliente_id = produto.produto_cliente_id 
+INNER JOIN marca ON marca.marca_id = produto.produto_marca_id
+
 --Sub-Select trazendo os produtos a cima do valor médio dos preços
 SELECT produto_id, nome_produto, preco_produto
 FROM produto 
