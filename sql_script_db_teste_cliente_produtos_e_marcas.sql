@@ -32,36 +32,21 @@ fotos_produto varchar(50)
 );
 	
 ---
-
 -- Inserindo clientes
 INSERT INTO cliente VALUES (1,'João', 'Av. Salgado Filho','Natal','RN','M',6000);
-
 INSERT INTO cliente VALUES (2,'Ana','Av. Hermes da Fonseca','Natal','RN','F',3500);
-
 INSERT INTO cliente VALUES (3,'Pedro','Av. Hermes da Fonseca','Natal','RN','M',5500);
-
 INSERT INTO cliente VALUES (4,'Manuel','Rua Manuel Dantas','Caicó','RN','M',1500);
-
 INSERT INTO cliente VALUES (5,'Lucas','Av. Salgado Filho','Natal','RN','M',4500);
-
 INSERT INTO cliente VALUES (6,'Cláudio','Rua Manuel Dantas','Caicó','RN','M',1890);
-
 INSERT INTO cliente VALUES (7,'José','Av. Roberto Freire','Natal','RN','M',5000);
-
 INSERT INTO cliente VALUES (8,'Marcos','Rua Ipê Roxo','Caicó','RN','M',1800);
-
 INSERT INTO cliente VALUES (9,'Maria','Av. Salgado Filho','Natal','RN','F',6500);
-
 INSERT INTO cliente VALUES (10,'Manuela','Rua Manuel Dantas','Caicó','RN','F',1800);
-
 INSERT INTO cliente VALUES (11,'Márcia','Av. Ayrton Senna','Natal','RN','F',1400);
-
 INSERT INTO cliente VALUES (12,'Flávia','Rua Dantas de Sousa','Parnamirim','RN','F',1750);
-
 INSERT INTO cliente VALUES (13,'Laura','Rua dos Coqueiros','Parnamirim','RN','F',4500);
-
 INSERT INTO cliente VALUES (14,'Levi','Rua dos Cajueiros','Natal','RN','M',5900);
-
 INSERT INTO cliente VALUES (15,'Miguel','Rua da Pitangueira','Parnamirim','RN','M',8000);
 
 -- Inserindo Marcas
@@ -95,14 +80,11 @@ VALUES 	(1,1,1,'Feijão',4.79,'fbl.png'),
 		(12,12,12,'Refrigerante Coca-cola 2L',9.99,'fbl.png');
 
 ---
-
 -- Atualizando clientes
 UPDATE cliente SET endereco_cliente = 'Av. Maria Lacerda' where nome_cliente='Ana';
-
 UPDATE cliente Set cidade_cliente = 'Caicó', endereco_cliente = 'Av. Coronel Martiniano' where nome_cliente = 'Ana' or nome_cliente = 'Pedro';
 
 ---
-
 -- Realizando consultas
 select * from cliente;
 select * from marca;
