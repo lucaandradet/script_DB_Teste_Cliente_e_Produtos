@@ -23,8 +23,9 @@ tipo_marca VARCHAR(2)
 
 CREATE TABLE produto
 (
+produto_id INT,
+produto_marca_id INT,
 prod_cliente_id INT,
-prod_marca_id INT,
 nome_produto VARCHAR(100),
 preco_produto MONEY,
 fotos_produto varchar(50)
@@ -57,11 +58,41 @@ INSERT INTO cliente VALUES (11,'Márcia','Av. Ayrton Senna','Natal','RN','F',140
 
 INSERT INTO cliente VALUES (12,'Flávia','Rua Dantas de Sousa','Parnamirim','RN','F',1750);
 
+INSERT INTO cliente VALUES (13,'Laura','Rua dos Coqueiros','Parnamirim','RN','F',4500);
+
+INSERT INTO cliente VALUES (14,'Levi','Rua dos Cajueiros','Natal','RN','M',5900);
+
+INSERT INTO cliente VALUES (15,'Miguel','Rua da Pitangueira','Parnamirim','RN','M',8000);
+
 -- Inserindo Marcas
-INSERT INTO marca VALUES (1,'Broto legal','A'),(2,'Prato fino','A'),(3,'Carmil','B'),(4,'Scala','B');
+INSERT INTO marca 
+VALUES 	(1,'Broto legal','A'),
+		(2,'Prato fino','A'),
+		(3,'Carmil','B'),
+		(4,'Scala','B'),
+		(5,'Nestle','C'),
+		(6,'Bauducco','D'),
+		(7,'Yoki','E'),
+		(8,'Sadia','F'),
+		(9,'Seara','G'),
+		(10,'Marilan','H'),
+		(11,'Danone','I'),
+		(12,'Coca-cola','J');
 
 -- Inserindo Produtos
-INSERT INTO produto VALUES (1,1,'Feijão',3,'fbl.png'), (3,2,'Arroz Sinhá',5,'fbl.png'), (6,3,'Arroz Dedé',5,'fbl.png'), (9,4,'Macarrão Parafuso',3,'fbl.png');
+INSERT INTO produto 
+VALUES 	(1,1,1,'Feijão',4.79,'fbl.png'), 
+		(2,2,2,'Arroz Sinhá',6.50,'fbl.png'), 
+		(3,3,15,'Arroz Dedé',5.49,'fbl.png'), 
+		(4,4,4,'Macarrão Parafuso',3.49,'fbl.png'),
+		(5,5,5,'Biscoito Nestle',2.90,'fbl.png'), 
+		(6,6,14,'Biscoito Bauducco',3.45,'fbl.png'), 
+		(7,7,7,'Farofa Yoki',5.89,'fbl.png'), 
+		(8,8,8,'Salsicha Sadia',15.99,'fbl.png'),
+		(9,9,13,'Salsicha Seara',11.90,'fbl.png'), 
+		(10,10,10,'Bolacha Marilan',1.89,'fbl.png'), 
+		(11,11,2,'Danoninho',3.59,'fbl.png'), 
+		(12,12,12,'Refrigerante Coca-cola 2L',9.99,'fbl.png');
 
 ---
 
@@ -91,4 +122,8 @@ SELECT nome_cliente, endereco_cliente, cidade_cliente, renda_cliente
 SELECT * FROM cliente WHERE renda_cliente BETWEEN 3000 AND 5000;
 
 -- Query com mais de uma tabela - INNER JOIN
-SELECT nome_cliente as CLIENTE, nome_produto AS PRODUTO FROM cliente INNER JOIN produto ON cliente.cliente_id = produto.prod_cliente_id ORDER BY nome_cliente
+SELECT nome_cliente as CLIENTE, nome_produto AS PRODUTO FROM cliente INNER JOIN produto ON cliente.cliente_id = produto.produto_cliente_id ORDER BY nome_cliente
+
+--Sub-Select trazendo os produtos a cima do valor médio dos preços
+SELECT produto_id, nome_produto, preco_produto
+FROM produto WHERE preco_produto > (SELECT AVG(preco_produto) FROM produto)
