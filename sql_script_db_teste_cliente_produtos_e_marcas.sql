@@ -125,3 +125,11 @@ FROM cliente
 INNER JOIN produto ON cliente.cliente_id = produto.produto_cliente_id 
 WHERE preco_produto > (SELECT AVG(preco_produto) FROM produto)
 ORDER BY preco_produto DESC;
+
+-- Query com dois inner joins e um sub-select fazendo a média dos preços
+SELECT produto_id, nome_produto, descricao_marca, preco_produto, nome_cliente
+FROM produto 
+INNER JOIN cliente ON cliente.cliente_id = produto.produto_cliente_id 
+INNER JOIN marca ON marca.marca_id = produto.produto_marca_id
+WHERE preco_produto > (SELECT AVG(preco_produto) FROM produto)
+ORDER BY preco_produto DESC;
